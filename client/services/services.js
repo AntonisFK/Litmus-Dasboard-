@@ -117,3 +117,17 @@ angular.module('myApp').factory('AuthService',
     }
 
 }]);
+
+angular.module('myApp').factory('Test', ['$http', 
+ function($http){
+
+  function test(){
+     $http.get('/test')
+    .success(function(data){
+      console.log(data)
+    })
+  }
+ }
+]);
+
+

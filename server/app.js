@@ -9,18 +9,28 @@ var hash = require('bcrypt-nodejs');
 var path = require('path');
 var passport = require('passport');
 var localStrategy = require('passport-local' ).Strategy;
+var fs = require('fs')
 
 // mongoose
-mongoose.connect('mongodb://localhost/mean-auth');
+mongoose.connect('mongodb://localhost/LADashboard');
+var models_path = __dirname + '/models'
 
+fs.readdirSync(models_path).forEach(function(file){
+  if(file.indexOf('.js') > 0) {
+    require(models_path + '/' +file);
+  }
+})
 // user schema/model
-var User = require('./models/user.js');
+var User = mongoose.model('User');
 
 // create instance of express
 var app = express();
 
 // require routes
 var routes = require('./routes/api.js');
+
+
+
 
 // define middleware
 app.use(express.static(path.join(__dirname, '../client')));

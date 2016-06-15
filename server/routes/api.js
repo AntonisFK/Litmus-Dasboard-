@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-
+var temp = require('../controllers/temps.js')
 var User = require('../models/user.js');
 
 
@@ -61,6 +61,12 @@ router.get('/status', function(req, res) {
     status: true
   });
 });
+router.get('/alltemp', function(req, res){
+  temp.index(req,res);
+})
 
+router.get('/temp', function(req, res){
+  temp.getTemp(req, res);
+})
 
 module.exports = router;

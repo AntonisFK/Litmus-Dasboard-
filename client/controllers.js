@@ -73,3 +73,17 @@ angular.module('myApp').controller('registerController',
     };
 
 }]);
+
+angular.module('myApp').controller('temp', ['$scope', 'Test',
+
+ function($scope){
+  $scope.grabtemp = function () {
+    console.log("hi")
+    Test.test();
+
+  }
+ }
+
+])
+
+
