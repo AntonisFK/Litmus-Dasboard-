@@ -1,0 +1,22 @@
+{
+  "name": "ladasboard",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Antonisfk <antonisfkiaras@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/AntonisFK/Litmus-Dasboard-",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-nvd3": "^1.0.7",
+    "d3": "^3.5.17",
+    "angular": "^1.5.7"
+  }
+}

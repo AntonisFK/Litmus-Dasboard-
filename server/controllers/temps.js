@@ -32,8 +32,11 @@ module.exports = (function(){
         console.log(message.toString());
         Temp.create({temp:Number(message)}, function(err, result){
           console.log("result", result)
-          res.json(result)
-        });
+        }).then(function(output){
+          res.json(output)
+        },function(err){
+          console.log(err)
+        })
 
 
 
