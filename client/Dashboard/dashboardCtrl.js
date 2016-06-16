@@ -7,19 +7,16 @@ angular.module('myApp')
     
     
     $scope.tempatures = [];
-
     DataService.index(function(result){
       $scope.tempatures = result;
+      $scope.data = result
       console.log($scope.tempatures)
-      var templ = $scope.tempatures
-      console.log(templ , "hi")
-      $scope.data = {templ}
     })
 
       console.log($scope.tempatures)
 
 
-  $scope.options = {
+scope.options = {
             chart: {
                 type: 'lineWithFocusChart',
                 height: 450,
@@ -33,33 +30,21 @@ angular.module('myApp')
                 useInteractiveGuideline: true,
                 xAxis: {
                     axisLabel: 'X Axis',
-                    tickFormat: function(d){
+                    tickFormat: function(d, i ){
                       console.log(d)
-                        return d3.format(',f')(d);
-                    }
-                },
-                x2Axis: {
-                    tickFormat: function(d){
-                        return d3.format(',f')(d);
+                      return d
                     }
                 },
                 yAxis: {
                     axisLabel: 'Y Axis',
-                    tickFormat: function(d){
-                        return d3.format(',.2f')(d);
+                    tickFormat: function(d, i){
+                      return d
                     },
                     rotateYLabel: false
-                },
-                y2Axis: {
-                    tickFormat: function(d){
-                        return d3.format(',.2f')(d);
-                    }
+                }
                 }
 
             }
-        };
- 
-    
     $scope.liveTemp = function(){
       DataService.getTemp(function(result){
         console.log('alltemps',result) 
@@ -71,3 +56,9 @@ angular.module('myApp')
     }
   }
 ]);
+
+angular.module('myApp').filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});

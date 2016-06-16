@@ -1,19 +1,25 @@
-
-
-
-
-
-
+<nav>
+  <div ng-controller="logoutController">
+    <a ng-click='logout()' class="btn btn-default">Logout</a>
+  </div>
+</nav>
 <div ng-contoller="dashboardController">
+  <h3>Grab live temp data</h3>
   <button ng-click="liveTemp()">Grab Temp</button>
-  <ul>
-    <li ng-repeat=" temps in tempatures">{{temps.temp}}</li>
-  </ul>
-  <nvd3 options="options" data="data"></nvd3>
+   <p>Table of live data. Temperature highlighted in red is above 95 degrees Fahrenheit</p>
+   <table class="table">
+    <thead>
+      <tr>
+        <th>Temperature(F)</th>
+        <th>Created_at</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="temps in tempatures | reverse">
+      <tr ng-class="{danger: temps.temp > 95}">
+        <td>{{temps.temp}}</td>
+        <td>{{temps.created_at}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-
-
-<div ng-controller="logoutController">
-  <a ng-click='logout()' class="btn btn-default">Logout</a>
-</div>
